@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#08192d">
+    <title>AirX | Booking Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="topbar"><a href="#home" class="brand"><span class="brandmark">✈</span> Air<span>X</span></a>
+        <nav><a href="#search">Explore Flights</a><a href="#bookings">My Bookings</a><a href="#dashboard">Dashboard</a>
+        </nav><button id="chatOpen" class="chat-top">✦ Ask AirX</button>
+    </header>
+    <main id="home">
+        <section class="hero">
+            <div class="hero-content">
+                <p class="eyebrow">YOUR JOURNEY, IN CONTROL</p>
+                <h1>Travel plans,<br><em>beautifully managed.</em></h1>
+                <p>Search flights, create reservations, update passengers and manage trips from one effortless
+                    dashboard.</p>
+                <div class="hero-buttons"><a href="#search" class="primary-link">Find a flight →</a><a href="#bookings"
+                        class="secondary-link">Manage my trip</a></div>
+            </div>
+            <div class="hero-art"><span class="orbit orbit1"></span><span class="orbit orbit2"></span>
+                <div class="hero-plane">✈</div>
+                <div class="floating-ticket"><small>YOUR NEXT ADVENTURE</small><strong>Ready for
+                        takeoff</strong><span>AirX · Fly beyond</span></div>
+            </div>
+        </section>
+        <section class="stats" id="dashboard">
+            <div><small>ACTIVE BOOKINGS</small><strong id="statActive">0</strong></div>
+            <div><small>UPCOMING FLIGHTS</small><strong id="statUpcoming">0</strong></div>
+            <div><small>TOTAL RESERVATIONS</small><strong id="statTotal">0</strong></div>
+            <div><small>DESTINATIONS EXPLORED</small><strong id="statDestinations">0</strong></div>
+        </section>
+        <section class="section" id="search">
+            <div class="section-head">
+                <div><span class="eyebrow dark">DISCOVER YOUR NEXT TRIP</span>
+                    <h2>Find your perfect flight</h2>
+                </div>
+                <p>Compare available sample routes and book in seconds.</p>
+            </div>
+            <form id="searchForm" class="search-panel">
+                <div class="form-grid"><label>FROM<select id="from" required>
+                            <option value="PIT">Pittsburgh · PIT</option>
+                            <option value="ORD">Chicago · ORD</option>
+                            <option value="ATL">Atlanta · ATL</option>
+                            <option value="CLT">Charlotte · CLT</option>
+                            <option value="JFK">New York · JFK</option>
+                            <option value="DFW">Dallas · DFW</option>
+                            <option value="LAX">Los Angeles · LAX</option>
+                            <option value="SFO">San Francisco · SFO</option>
+                        </select></label><label>TO<select id="to" required>
+                            <option value="ORD">Chicago · ORD</option>
+                            <option value="PIT">Pittsburgh · PIT</option>
+                            <option value="ATL">Atlanta · ATL</option>
+                            <option value="CLT">Charlotte · CLT</option>
+                            <option value="JFK">New York · JFK</option>
+                            <option value="DFW">Dallas · DFW</option>
+                            <option value="LAX">Los Angeles · LAX</option>
+                            <option value="SFO">San Francisco · SFO</option>
+                        </select></label><label>DEPARTURE<input id="date" type="date"
+                            required></label><label>PASSENGERS<select id="travelers">
+                            <option value="1">1 traveler</option>
+                            <option value="2">2 travelers</option>
+                            <option value="3">3 travelers</option>
+                            <option value="4">4 travelers</option>
+                        </select></label><label>CABIN<select id="cabin">
+                            <option>Economy</option>
+                            <option>Premium Economy</option>
+                            <option>Business</option>
+                        </select></label><button class="btn" type="submit">Search flights →</button></div>
+            </form>
+            <div id="results" class="results" aria-live="polite"></div>
+        </section>
+        <section class="section bookings-section" id="bookings">
+            <div class="section-head">
+                <div><span class="eyebrow dark">ALL IN ONE PLACE</span>
+                    <h2>Your reservations</h2>
+                </div>
+                <p>Update travelers, change dates, or cancel a demo booking.</p>
+            </div>
+            <div class="toolbar"><input id="bookingFilter" placeholder="Search by confirmation, name or city"
+                    aria-label="Search reservations"><select id="statusFilter" aria-label="Filter reservation status">
+                    <option value="all">All reservations</option>
+                    <option value="Confirmed">Confirmed</option>
+                    <option value="Cancelled">Cancelled</option>
+                </select><button id="seedDemo" class="outline-btn">+ Load sample bookings</button></div>
+            <div id="bookingList" class="booking-list" aria-live="polite"></div>
+        </section>
+        <section class="features">
+            <div><span>01 / SEARCH</span>
+                <h3>Explore confidently</h3>
+                <p>Search sample routes and compare cabin options.</p>
+            </div>
+            <div><span>02 / MANAGE</span>
+                <h3>Every detail in one place</h3>
+                <p>Edit traveler details and change your travel date.</p>
+            </div>
+            <div><span>03 / ASSIST</span>
+                <h3>Help at every step</h3>
+                <p>Our built-in chatbot helps you find and manage trips.</p>
+            </div>
+        </section>
+    </main>
+    <footer><b>✈ AirX</b>
+        <p>Designed for journeys ahead. Portfolio demo only — no real tickets, payments, or airline systems.</p><small>©
+            <span id="year"></span> AirX Demo</small>
+    </footer>
+    <div id="modalBackdrop" class="backdrop hidden" role="presentation">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="x-btn"
+                id="modalClose" aria-label="Close dialog">×</button>
+            <h2 id="modalTitle"></h2>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+    <button id="chatBubble" class="chat-bubble" aria-label="Open travel chatbot">✦ <span>Chat</span></button>
+    <aside id="chatPanel" class="chat-panel hidden" aria-label="AirX travel assistant">
+        <div class="chat-header">
+            <div><b>✦ AirX Travel Assistant</b><small>Available anytime · Demo agent</small></div><button id="chatClose"
+                aria-label="Close chat">×</button>
+        </div>
+        <div id="chatMessages" class="chat-messages" aria-live="polite"></div>
+        <div class="suggestions"><button data-ask="Find flights from Pittsburgh to Chicago tomorrow">Find
+                flights</button><button data-ask="Show my bookings">My bookings</button><button
+                data-ask="How do I change a booking?">Change booking</button></div>
+        <form id="chatForm" class="chat-input"><input id="chatText" placeholder="Ask me about your trip…"
+                aria-label="Message travel assistant" required><button type="submit"
+                aria-label="Send message">➤</button></form>
+    </aside>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="app.js" defer></script>
+</body>
+
+</html>
